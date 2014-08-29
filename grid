@@ -1,0 +1,151 @@
+.flex() {
+    display: -webkit-box; 
+       display: -moz-box; 
+    display:-webkit-flex;
+    display: -ms-flexbox;
+            display:flex;
+}
+
+.flex-justify(@justifyStyle) {
+    -webkit-justify-content: @justifyStyle;
+           .ms-flex-justify(@justifyStyle);
+            justify-content: @justifyStyle;
+}
+ 
+.flex-direction(@direction) {
+  -webkit-flex-direction:@direction;
+      -ms-flex-direction:@direction;
+          flex-direction:@direction;
+}
+ 
+.flex-align-items(@alignStyle) {
+    -webkit-align-items:@alignStyle;
+         -ms-flex-align:@alignStyle;
+           align-items: @alignStyle;   
+}
+ 
+.flex-align-self(@selfAlignStyle) {
+  .ms-flex-align-self(@selfAlignStyle);
+    -webkit-align-self:@selfAlignStyle;
+           align-self: @selfAlignStyle;
+}
+ 
+.flex-order(@order) {
+  -ms-flex-order:@order;
+   -webkit-order:@order;
+           order:@order; 
+}
+ 
+.flex-wrap(@wrap) {
+  -webkit-flex-wrap:@wrap;
+      -ms-flex-wrap:@wrap;
+          flex-wrap:@wrap; 
+} 
+
+// Flex Direction and Wrap
+// - applies to: flex containers
+// <flex-direction> || <flex-wrap>
+.flex-flow(@flow: row wrap) {
+  -webkit-flex-flow: @flow;
+     -moz-flex-flow: @flow;
+      -ms-flex-flow: @flow;
+          flex-flow: @flow;
+}
+ 
+/* These are the conditional mixins for the different syntax for IE10 Flexbox*/
+.ms-flex-justify(@msJustify) when (@msJustify = space-between)  {
+    -ms-flex-pack:justify;
+}
+ 
+.ms-flex-justify(@msJustify) when (@msJustify = space-around) {
+    -ms-flex-pack:distribute;
+}
+ 
+.ms-flex-justify(@msJustify) when (@msJustify = flex-end) {
+    -ms-flex-pack:end;
+}
+ 
+.ms-flex-justify(@msJustify) when (@msJustify = flex-start) {
+    -ms-flex-pack:start;
+}
+ 
+.ms-flex-justify(@msJustify) when (@msJustify = center) {
+    -ms-flex-pack:center;
+}
+ 
+.ms-flex-align-self(@msSelfAlign) when (@msSelfAlign = flex-end) {
+    -ms-flex-item-align: end;
+}
+ 
+.ms-flex-align-self(@msSelfAlign) when (@msSelfAlign = flex-start) {
+    -ms-flex-item-align: start;
+}
+ 
+.ms-flex-align-self(@msSelfAlign) when (@msSelfAlign = auto), (@msSelfAlign = center),(@msSelfAlign = baseline), (@msSelfAlign = stretch) {
+    -ms-flex-item-align: @msSelfAlign;
+}
+
+
+.row {
+  .flex;
+  .flex-flow(column wrap);
+  .flex-justify(space-between);
+  .col {
+    width:100%;
+  }
+  .col-1, .col-1-2, .col-1-3, .col-1-4, .col-1-5, .col-2-3, .col-2-4, .col-2-5, .col-3-5 {
+    width:100%;
+  }
+}
+
+/* Medium screens */
+@media all and (min-width: 48em) {
+  
+  .row {
+    .flex;
+    .flex-flow(row wrap); 
+  
+    .col-1-2, .col-1-3, .col-1-4, .col-1-5 {
+    width:48%;
+  }  
+    .col-2-3, .col-2-4, .col-2-5, .col-3-5 {
+      width:100%;
+    }
+  }
+}
+/* large screens */
+@media all and (min-width: 62em) {
+  
+  .row {
+    .flex;
+    .flex-flow(row wrap);
+    .flex-justify(space-between);
+    .col-1-3 {
+      width:31.3333333%;
+    }
+    .col-2-3 {
+      width: 65.6666666%;
+    }
+    .col-1-4 {
+      width:22%;
+    }  
+    .col-2-4 {
+      width:48%;
+    }
+    .col-3-4 {
+      width:74%;
+    }
+    .col-1-5 {
+      width:18%;
+    }
+    .col-4-5 {
+      width:79.5%;
+    }
+    .col-2-5 {
+      width:38%;
+    }
+    .col-3-5 {
+      width:59.5%;
+    }
+  }
+}
